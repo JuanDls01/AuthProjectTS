@@ -19,5 +19,14 @@ npm install typeorm --save
 npm install reflect-metadata --save
 ```
 
-Si quieren iniciarlo manualmente les dejo el link de Next.js para leer la documentación:
-https://nextjs.org/docs#manual-setup
+```env
+DB_USER=********
+DB_PASSWORD=********
+DB_HOST="localhost"
+DB_NAME=********
+DB_PORT="5432"
+NODE_ENV="development"
+API_PORT="3001"
+API_HOST="localhost"
+CORS="http://localhost:3000"
+```
