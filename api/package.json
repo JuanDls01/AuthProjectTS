@@ -1,0 +1,35 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "En este proyecto se busco realizar una interface de login que almacene usuarios en una base de datos, y que dependiendo el rol del usuario pueda acceder a determinados views. Para realizarlo también usaré Next.js, Typescript, login de Google y capaz algún login de Facebook. Si estas tecnologías te interesan y querés practicar te recomiendo que lo forkees para tener un ejemplo de como trabajarlo.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.6"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.35",
+    "@types/pg": "^8.6.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.6.4"
+  }
+}
