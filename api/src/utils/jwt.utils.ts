@@ -1,6 +1,6 @@
 // This function generate a JSON Web Token:
-import { verify } from 'crypto';
-import { sign, SignOptions, VerifyOptions } from 'jsonwebtoken';
+// import { verify } from 'crypto';
+import { sign } from 'jsonwebtoken';
 import config from '../../lib/config';
 
 export const generateAccessToken = (user:object): string => {
@@ -19,9 +19,8 @@ export const generateAccessToken = (user:object): string => {
 //     userId:number;
 // }
 
-// // Checks if JWT token is valid:
-// export function validateToken(token: string):
-// Promise<TokenPayload> {
+// Checks if JWT token is valid:
+// export function validateToken(token: string): Promise<TokenPayload> {
 //     const publicKey: string = config.publicKey;
 
 //     const verifyOptions: VerifyOptions = {
@@ -29,9 +28,13 @@ export const generateAccessToken = (user:object): string => {
 //     }
 
 //     return new Promise((resolve, reject) => {
-//         verify(token, publicKey, verifyOptions, (error, decoded: TokenPayload) => {
+//         verify(token, publicKey, verifyOptions, (error, decoded) => {
 //             if (error) return reject(error);
-//             resolve(decoded);
+//             resolve (decoded)
 //         })
+//         // verify(token, publicKey, verifyOptions, (error, decoded: TokenPayload) => {
+//         //     if (error) return reject(error);
+//         //     resolve(decoded);
+//         // })
 //     })
 // }
