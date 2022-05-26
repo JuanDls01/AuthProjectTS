@@ -3,11 +3,13 @@
 import { sign } from 'jsonwebtoken';
 import config from '../../lib/config';
 
-export const generateAccessToken = (user:object): string => {
+export const generateAccessToken = (userData:object): string => {
     // This function create the access token, we have to pass a payload (it's the user information),
-    // and the private key to the sign function. 
+    // and the private key to the sign function.
+    console.log('hola') 
     const secret:string = config.privateKey;
-    const accessToken: string = sign(user, secret);
+    console.log(secret)
+    const accessToken: string = sign(userData, secret);
     console.log(accessToken);
     return accessToken
 };

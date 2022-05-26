@@ -1,4 +1,6 @@
 import { User } from "../models/User";
+import * as bcrypt from 'bcrypt'
+import { generateAccessToken } from "./jwt.utils";
 
 
 export const CreateUser = async (
@@ -21,8 +23,34 @@ export const CreateUser = async (
         user.email = email;
         user.password = password;
         await user.save();
-        return {user, password}
+        return {user}
     } catch (err: any | object) {
+        return {error: err.message}
+    }
+}
+
+interface authInterface {
+    user?: object;
+    token?: string;
+    error?: string;
+}
+
+export const AuthUser = async (email: string, password: string): Promise<authInterface>=> {
+    try {
+        const user: User | null = await User.findOne({where: {email: email}});
+        if (user) {
+            const verified: boolean = bcrypt.compareSync(password, user.password);
+            console.log('verified', verified)
+            if (verified) {
+                const token: string = generateAccessToken({ id: user.id })
+                return {user, token}
+            } else {
+                return { error: 'Incorrect password!'}
+            }
+        } else {
+            return {error: 'This email is not registered!'}
+        }
+    } catch(err: any | object) {
         return {error: err.message}
     }
 }
