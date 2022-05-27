@@ -32,7 +32,6 @@ export const AuthUser = async (userData: loginData): Promise<resultAuthUtils>=> 
         const user: User | null = await User.findOne({where: {email: userData.email}});
         if (user) {
             const verified: boolean = bcrypt.compareSync(userData.password, user.password);
-            console.log('verified', verified)
             if (verified) {
                 const token: string = generateAccessToken({ id: user.id })
                 return {user, token}
@@ -47,7 +46,7 @@ export const AuthUser = async (userData: loginData): Promise<resultAuthUtils>=> 
     }
 };
 
-export const TokenAuth = async (userId: number, token: string) => {
+export const TokenAuth = async ( token: string, userId: number) => {
     try {
         const user: User | null = await User.findOne({ where: { id: userId } });
         if(user) {

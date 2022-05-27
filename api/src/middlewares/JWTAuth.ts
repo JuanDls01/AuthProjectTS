@@ -8,12 +8,12 @@ export const JWTAuthenticator = async (req: Request, res: Response, next: NextFu
         const token = authHeader && authHeader.split(' ')[1];
         if(token === undefined) return res.send({error: 'No token provides'})
         // Now we check if the token is validate:
-        verify(token, config.publicKey, (err, user) => {
+        // console.log(verify(token, config.privateKey))
+        verify(token, config.JWTSecret, (err, user) => {
             // if the token is invalid, we send an error
-            if(err) return res.send({error: 'Invalid token, logout'});
+            if(err) return res.status(500).send({error: 'Invalid token, logout'});
             // if the token is valid, we continue.
-            // req.user = user;
-            return next();
+            next();
         })
     } catch (err) {
         console.log(err)

@@ -40,11 +40,13 @@ router.post('/login/token', JWTAuthenticator, async (req: Request, res: Response
     // We call this route every time the root page is load, to know if 
     // the user is login. That's the reason we use the token. 
     try {
-        const {bodyToken, user} = req.body;
-        if (bodyToken && user) {
-            const foundUser = await TokenAuth(bodyToken, user);
+        const {bodyToken, userId} = req.body;
+        if (bodyToken && userId) {
+            const foundUser = await TokenAuth(bodyToken, userId);
             if(foundUser.error) return res.status(500).send({error: foundUser.error});
             return res.status(200).json(foundUser)
+        } else {
+            res.status(500).json({error: 'Invalid token, sorry'})
         }
     } catch (error: any | object) {
         return res.status(500).json({message: error.message})
