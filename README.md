@@ -4,7 +4,7 @@
 
 En este proyecto se busco realizar una interface de login que almacene usuarios en una base de datos, y que dependiendo el rol del usuario pueda acceder a determinados views. Para realizarlo también usaré Next.js, Typescript, login de Google y capaz algún login de Facebook. Si estas tecnologías te interesan y querés practicar te recomiendo que lo forkees para tener un ejemplo de como trabajarlo.
 
-## Setup Inicial
+## Setup Inicial Back
 
 Para crear la estructura del proyecto se ejecuto el comando:
 
@@ -29,4 +29,12 @@ NODE_ENV="development"
 API_PORT="3001"
 API_HOST="localhost"
 CORS="http://localhost:3000"
+```
+
+## Setup Inicial Front
+
+Para crear la estructura del proyecto se ejecuto el comando:
+
+```bash
+npx create-react-app authproject-ts --template typescript
 ```
