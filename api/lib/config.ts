@@ -13,7 +13,8 @@ const config = {
     host: process.env.API_host || 'localhost',
     cors: process.env.CORS || 'localhost:3000',
     publicKey: process.env.PUBLIC_KEY || '',
-    privateKey: process.env.PRIVATE_KEY || ''
+    privateKey: process.env.PRIVATE_KEY || '',
+    JWTSecret: process.env.JWT_SECRET_TOKEN || 'db56558d5bf4a3ded2333d9c2ba2e5fbc9e24143a4dd3e4f08a42152121de56697b6ff7c65adfd36bbb6e7ce3758d2d09a6a527d088a5100f87911702ce12a97',
 }
 
 export default config;
