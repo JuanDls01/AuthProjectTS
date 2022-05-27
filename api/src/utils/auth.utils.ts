@@ -15,7 +15,7 @@ export const CreateUser = async (
 
         // If email is not at the db we create the user. 
         // Instance the user, add the information and save it. 
-        const user = new User();
+        const user: User = new User();
         user.firstName = userData.firstName;
         user.lastName = userData.lastName;
         user.email = userData.email;
