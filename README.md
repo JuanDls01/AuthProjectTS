@@ -37,5 +37,6 @@ Para crear la estructura del proyecto se ejecuto el comando:
 
 ```bash
 npx create-react-app authproject-ts --template typescript
-npm install --save redux react-redux redux-thunk axios
+npm install --save redux react-redux redux-thunk axios react-router-dom
+npm install --save @types/react-router-dom
 ```
