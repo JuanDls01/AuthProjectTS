@@ -31,12 +31,35 @@ API_HOST="localhost"
 CORS="http://localhost:3000"
 ```
 
+## Routes
+
+### POST /auth/login/token:
+
+Response:
+
+```
+{
+  "user": {
+    "id": 1,
+    "firstName": "juan ignacio",
+    "lastName": "de los santos",
+    "email": "juanignaciodelossantos01@gmail.com",
+    "password": "$2a$10$uhftRMk5iyBuprPdIy578ekU7t9.RKopg.zTxAnqxbC6pi9iCD/36",
+    "googleId": null,
+    "createdAt": "2022-05-26T21:19:13.298Z",
+    "updatedAt": "2022-05-26T21:19:13.298Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUzNjQ2NTcyfQ.492vzBUfVDp2_E5QOuaN4H9MH2uk8dHYf1LJXTpGdTU"
+}
+```
+
 ## Setup Inicial Front
 
 Para crear la estructura del proyecto se ejecuto el comando:
 
 ```bash
 npx create-react-app authproject-ts --template typescript
+npm install react-cookie
 npm install --save redux react-redux redux-thunk axios react-router-dom
-npm install --save @types/react-router-dom
+npm install --save @types/react-router-dom @types/react-cookies
 ```

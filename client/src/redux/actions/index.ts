@@ -1,4 +1,10 @@
-export const actions: object = {};
-const actionsCreators: object = {};
+import loginToken, { LOGIN_TOKEN } from "./loginToken";
+
+export const actions = {
+    LOGIN_TOKEN,
+}
+const actionsCreators = {
+    loginToken,
+}
 
 export default actionsCreators;
