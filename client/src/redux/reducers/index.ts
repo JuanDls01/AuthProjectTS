@@ -1,39 +1,13 @@
-import { userToken, loginTokenAction, resLoginToken } from '../actions/loginToken';
+import { combineReducers } from 'redux';
+import { UserAuth } from '../actions/loginToken';
+import { loginTokenReducer } from '../reducers/loginToken.reducer'
 
-import { actions } from '../actions';
-
-const { LOGIN_TOKEN, } = actions;
-
-interface stateReducer {
-    user: userToken | string;
-    token: string;
-    tokenError: string | null;
+interface StoreState {
+    authUser: UserAuth
 }
 
-interface actionReducer {
-    type: string;
-    payload: resLoginToken,
-}
+const reducers = combineReducers({
+    UserAuthState: loginTokenReducer,
+});
 
-const initialState: stateReducer = {
-    user: "",
-    token: '',
-    tokenError: null,
-}
-
-const rootReducer = (state: stateReducer = initialState, action: actionReducer) => {
-    switch (action.type) {
-        case LOGIN_TOKEN: {
-            return {
-                ...state,
-                user: action.payload.user ? action.payload.user : "error",
-                token: action.payload.token ? action.payload.token : "",
-                tokenError: action.payload.error ? action.payload.error : null,
-            };
-        };
-        default:
-            return state;
-    }
-};
-
-export default rootReducer;
+export default reducers;

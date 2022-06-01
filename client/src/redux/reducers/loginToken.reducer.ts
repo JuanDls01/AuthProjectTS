@@ -1,29 +1,22 @@
+import { ActionTypes } from '../actions/types';
+import { UserAuth, loginTokenAction } from '../actions/loginToken';
 
-// import { ActionTypes } from "../actions/types";
-import { loginTokenAction, resLoginToken, userToken } from "../actions/loginToken";
+const initialState: UserAuth = {
+    user: null,
+    token: null,
+    error: null
+}
 
-// interface stateLoginToken {
-//     user: userToken | string;
-//     token: string;
-//     tokenError: string | null;
-// }
-
-// const initialState = {
-//     user: {},
-//     token: "",
-//     error: "",
-// }
-
-// export const loginTokenReducer = (state: stateLoginToken, action: loginTokenAction) => {
-//     switch (action.type) {
-//         case ActionTypes.LOGIN_TOKEN:
-//             return {
-//                 ...state,
-//                 user: action.payload.user ? action.payload.user : "error",
-//                 token: action.payload.token ? action.payload.token : "",
-//                 tokenError: action.payload.error ? action.payload.error : null,
-//             }
-//         default:
-//             return state;
-//     }
-// };
+export const loginTokenReducer = (state = initialState, action: loginTokenAction) => {
+    switch (action.type) {
+        case ActionTypes.LOGIN_TOKEN:
+            return {
+                ...state,
+                user: action.payload.user ? action.payload.user : null,
+                token: action.payload.token ? action.payload.token : null,
+                error: action.payload.error ? action.payload.error : null,
+            };
+        default:
+            return state;
+    }
+}
