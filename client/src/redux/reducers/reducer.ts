@@ -7,6 +7,7 @@ const initialState: initialState = {
     token: null,
     firstName: null,
     email: null,
+    error: null,
 }
 
 

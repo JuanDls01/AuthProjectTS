@@ -1,4 +1,4 @@
-import { combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
 import loginReducer from "./reducer";
 
 const reducers = combineReducers({
@@ -6,3 +6,5 @@ const reducers = combineReducers({
 })
 
 export default reducers;
+
+export type State = ReturnType<typeof reducers>

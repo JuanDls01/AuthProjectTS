@@ -1,5 +1,9 @@
-import { loginAuthAction, loginAuthPayload } from "./loginUser";
+import loginUser, { loginAuthAction, loginAuthPayload } from "./loginUser";
 
 export type Payload = loginAuthPayload
 
-export type Action = loginAuthAction
+export type Action = loginAuthAction;
+
+export const actionCreators = {
+    loginUser
+}
