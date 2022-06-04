@@ -39,6 +39,7 @@ export const AuthUser = async (
 ): Promise<resultAuthUtils> => {
     try {
         const user: User | null = await User.findOne({
+            select: ["password", "email", "firstName"],
             where: { email: userData.email },
         });
         if (user) {
@@ -46,9 +47,15 @@ export const AuthUser = async (
                 userData.password,
                 user.password
             );
+            console.log(verified);
             if (verified) {
                 const token: string = generateAccessToken({ id: user.id });
-                return { user, token };
+                const response: object = {
+                    firstName: user.firstName,
+                    email: user.email,
+                    token: token
+                }
+                return response;
             } else {
                 return { error: "Incorrect password!" };
             }

@@ -1,10 +1,5 @@
-import loginToken, { LOGIN_TOKEN } from "./loginToken";
+import { loginAuthAction, loginAuthPayload } from "./loginUser";
 
-export const actions = {
-    LOGIN_TOKEN,
-}
-const actionsCreators = {
-    loginToken,
-}
+export type Payload = loginAuthPayload
 
-export default actionsCreators;
+export type Action = loginAuthAction

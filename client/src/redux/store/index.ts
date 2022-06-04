@@ -1,19 +1,15 @@
+import { legacy_createStore as createStore } from 'redux';
 import { applyMiddleware } from 'redux';
-import { configureStore } from '@reduxjs/toolkit'; // Link to documentation: https://redux-toolkit.js.org/api/configureStore
-import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension';
-import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
+import reducers from '../reducers/index';
 
-import { Reducer } from '@reduxjs/toolkit';
-import rootReducer from '../reducers/index';
+const store = createStore(
+    reducers,
+    {},
+    applyMiddleware(thunk)
+)
 
-// import rootReducer from "../reducer";
-
-// const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
-const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
-    // 
-})
 
 export default store;
+// Infer the RootState and AppDispatch types from the store itself
+export type RootState = ReturnType<typeof store.getState>

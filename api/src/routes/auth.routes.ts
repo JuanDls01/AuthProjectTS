@@ -32,8 +32,9 @@ router.post("/login", async (req: Request, res: Response) => {
     const userData: loginData = req.body;
     if (userData.email && userData.password) {
       const authUser = await AuthUser(userData);
-      if (authUser.error)
-        return res.status(500).send({ error: authUser.error });
+      if (authUser.error) {
+        return res.status(500).send({ error: authUser.error })
+      };
       return res.status(200).json(authUser);
     } else {
       res.status(500).send({ error: "There are missing parameters" });

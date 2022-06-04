@@ -13,6 +13,7 @@ import Admin from './components/SuperAdmin/Admin';
 const App = (): JSX.Element => {
   return (
     <div className="App">
+      <Routes>
       {/* User */}
       <Route index element = {<Home />}/>
       <Route path='/login' element = {<Login />} />
@@ -21,6 +22,7 @@ const App = (): JSX.Element => {
       <Route path='/seller' element = {<Seller />} />
       {/* Super Admin */}
       <Route path='/admin' element = {<Admin />} />
+      </Routes>
     </div>
   );
 }

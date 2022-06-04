@@ -53,6 +53,27 @@ Response:
 }
 ```
 
+### POST /auth/login:
+
+Request:
+
+```
+{
+  "email": "juanignaciodelossantos01@gmail.com",
+  "password": "password",
+}
+```
+
+Response:
+
+```
+{
+  "firstName": "juan ignacio",
+  "email": "juanignaciodelossantos01@gmail.com",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQzMDc5NzV9.QDKL1DJ2V2Ow5iTVLObnw4xEOFcnKU2_Q3Lj2xw7qCc"
+}
+```
+
 ## Setup Inicial Front
 
 Para crear la estructura del proyecto se ejecuto el comando:
