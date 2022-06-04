@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     <div className="App">
       <Routes>
       {/* User */}
-      <Route index element = {<Home />}/>
+      <Route index element = {<Login />}/>
       <Route path='/login' element = {<Login />} />
       <Route path='/register' element = {<Register />} />
       {/* Seller */}

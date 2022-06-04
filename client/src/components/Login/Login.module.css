@@ -1,0 +1,27 @@
+.googleButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 25px;
+    gap: 15px;
+
+    width: 440px;
+    height: 65px;
+
+    background: #FFFFFF;
+    border-radius: 6px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+    color: black
+};
+
+.googleButton google-logo {
+    width: 10px;
+    height: 10px;
+}

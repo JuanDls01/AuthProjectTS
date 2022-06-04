@@ -83,4 +83,6 @@ npx create-react-app authproject-ts --template typescript
 npm install react-cookie
 npm install --save redux react-redux redux-thunk axios react-router-dom
 npm install --save @types/react-router-dom @types/react-cookies
+npm install react-google-login
+npm install --save ts-react-google-login-component
 ```

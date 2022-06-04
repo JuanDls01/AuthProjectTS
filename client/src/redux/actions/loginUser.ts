@@ -14,12 +14,12 @@ export interface loginAuthAction {
     payload: loginAuthPayload,
 }
 
-interface input {
+interface LoginInput {
     email: string,
     password: string,
 }
 
-const loginUser = async (input: input): Promise<loginAuthAction> => {
+const loginUser = async (input: LoginInput): Promise<loginAuthAction> => {
     const json = await axios.post<loginAuthPayload>("http//localhost:3001/api/auth/login", input);
     return {
         type: ActionType.LOGIN_USER,
