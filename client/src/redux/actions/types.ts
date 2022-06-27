@@ -1,3 +1,4 @@
 export enum ActionType {
-    LOGIN_USER = "loginUser",
+    LOGIN_USER,
+    API_ERRORS,
 }

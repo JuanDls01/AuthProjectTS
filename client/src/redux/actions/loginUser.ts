@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ActionType } from './types';
-import { Dispatch } from 'redux'
+import { Dispatch } from 'redux';
+import { InputLogin } from "../../components/Types";
 
 export interface loginAuthPayload {
     token: string | null,
@@ -14,12 +15,13 @@ export interface loginAuthAction {
     payload: loginAuthPayload,
 }
 
-interface LoginInput {
-    email: string,
-    password: string,
-}
+// interface LoginInput {
+//     email: string,
+//     password: string,
+// }
 
-const loginUser = async (input: LoginInput): Promise<loginAuthAction> => {
+const loginUser = async (input: InputLogin): Promise<loginAuthAction> => {
+    console.log('Hola, llegué al action creator')
     const json = await axios.post<loginAuthPayload>("http//localhost:3001/api/auth/login", input);
     return {
         type: ActionType.LOGIN_USER,

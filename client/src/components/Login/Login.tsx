@@ -8,11 +8,12 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import Presentation from "../Presentation/Presentation";
 import style from './Login.module.css'
 
-import {InputLogin} from "../Types/index";
+import {InputLogin, InputLoginErr} from "../Types/index";
 import { actionCreators } from "../../redux/actions";
 import { State } from "../../redux/reducers";
 import { AppDispatch } from "../../redux/store";
 import { LoginValidator } from "../Utils/Validators";
+import { Link } from "react-router-dom";
 
 const Login = () : JSX.Element => {
     const dispatch: AppDispatch = useDispatch();
@@ -38,14 +39,15 @@ const Login = () : JSX.Element => {
     //     }
     // }, [token]);
 
-    //Info del Usuario:
-    const [input, setInput] = useState({
+    //Local States:
+    const [input, setInput] = useState<InputLogin>({
         email: '',
         password: '',
     });
-
-    //Guardo posibles errores:
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState<InputLoginErr>({
+        emailErr: null,
+        passwordErr: null
+    });
 
     // events documentation: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/
     //Handle que almacena en input lo que introduce el usuario:
@@ -57,13 +59,9 @@ const Login = () : JSX.Element => {
     }
 
     //Handle para que el usuario pueda ingresar:
-    const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // console.log('inputHandleSubmit', input);
         dispatch(await loginUser(input));
-        // if(!autherr){
-        //     closeLoginModal()
-        // }
     }
 
     return (
@@ -72,6 +70,43 @@ const Login = () : JSX.Element => {
             <div className={style.formContainner}>
                 <h1>Login</h1>
                 <p>You can login with your registered account or quik login with your Google account</p>
+                <form className={style.formContent} onSubmit={(e) => handleSubmit(e)}>
+                    <div className={style.inputContainner}>
+                        {/* Email */}
+                        <label htmlFor="emailInput">Email:</label>
+                        <input
+                            type={'email'}
+                            name={'email'}
+                            id={'email'}
+                            className={style.input}
+                            placeholder={'Email'}
+                            value={input['email']}
+                            // autoFocus={autoFocus}
+                            onChange={handleChange}
+                        />
+                        {errors['emailErr'] ? <div className={style.error}>{errors['emailErr']}</div> : null}
+                    </div>
+                    <div className={style.inputContainner}>
+                        {/* Password */}
+                        <label htmlFor="passwordInput">Password:</label>
+                        <input
+                            type={'password'}
+                            name={'password'}
+                            id={'password'}
+                            className={style.input}
+                            placeholder={'Password'}
+                            value={input['password']}
+                            // autoFocus={autoFocus}
+                            onChange={handleChange}
+                        />
+                        {errors['passwordErr'] ? <div className={style.error}>{errors['passwordErr']}</div> : null}
+                    </div>
+                    <button type="submit">Login</button>
+                    <div className={style.linkRedirect}>
+                        Don't have an account? <Link to='register'>Create one!</Link>
+                    </div>
+                </form>
+                
             </div>
         </div>
     )
